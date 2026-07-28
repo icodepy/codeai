@@ -1,11 +1,10 @@
 package com.train.codeai.controller;
 
+import com.train.codeai.pojo.ChatRequest;
+import com.train.codeai.service.ChatMemoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -13,20 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ChatMemoryController {
 
-    private final ChatClient chatClient;
+    private final ChatMemoryService chatMemoryService;
 
-    public ChatMemoryController(ChatClient chatClient){
-        this.chatClient = chatClient;
+    public ChatMemoryController(ChatMemoryService chatMemoryService ){
+        this.chatMemoryService = chatMemoryService;
     }
 
-    @GetMapping("/memory")
-    public String getResponse(@RequestParam("prompt") String prompt){
-        log.info("prompt = {} received",prompt);
-        return chatClient
-                .prompt()
-                .user(prompt)
-                .call()
-                .content();
-
+    @PostMapping("/memory")
+    public String getResponse(@RequestBody ChatRequest chatRequest){
+        return chatMemoryService.getResponse(chatRequest);
     }
 }
