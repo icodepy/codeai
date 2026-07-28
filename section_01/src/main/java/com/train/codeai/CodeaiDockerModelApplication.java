@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CodeaiApplication {
+public class CodeaiDockerModelApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CodeaiApplication.class, args);
+		SpringApplication.run(CodeaiDockerModelApplication.class, args);
 	}
 
 }
