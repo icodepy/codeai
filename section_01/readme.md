@@ -1,3 +1,5 @@
+
+
 to run ollama server, execute the following command in cmd - "ollama run llama3.2:1b"
 1. include the ollama dependency
 2. start the server by using the command "ollama run llama3.2"
